@@ -42,7 +42,7 @@ namespace TheropodSystem.HUD
                 Console.WriteLine();
             }
         }
-
+        
         public void StartSystem()
         {
             List<string> sb = new List<string>();
@@ -64,6 +64,21 @@ namespace TheropodSystem.HUD
             }
 
             Thread.Sleep(3000);
+        }
+
+        public async void LockScreen()
+        {
+            for (int i = 0; i < 1000; i++)
+            {
+                Thread.Sleep(WaitTimeGenerate());
+
+                for(int j = 0; j < 4; j++)
+                {
+                    Console.Write(GenerateLines() + " ");
+                }
+
+                Console.WriteLine();
+            }
         }
 
         void Header()

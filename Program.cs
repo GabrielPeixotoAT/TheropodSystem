@@ -30,6 +30,11 @@ do {
             break;
         case 2:
             break;
+        case 3:
+            starting.LockScreen();
+            break;
+        case 4:
+            break;
     }
 } while (index != options.Count);
 
