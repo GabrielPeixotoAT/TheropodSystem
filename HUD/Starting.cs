@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using TheropodSystem;
 
 namespace TheropodSystem.HUD
 {
@@ -40,6 +41,45 @@ namespace TheropodSystem.HUD
 
                 Console.WriteLine();
             }
+        }
+
+        public void StartSystem()
+        {
+            List<string> sb = new List<string>();
+
+            Header();
+
+            sb.Add(" COPYRIGHT " + SystemInfo.COPYRIGHTYEAR + " THEROPODA(R)");
+            sb.Add(" LOADER " + SystemInfo.SystemVersion);
+            sb.Add(" EXEC VERSION 2.14");
+            sb.Add(" " + SystemInfo.MEMORY + " KILOBYTES RAM SYSTEM");
+            sb.Add(" 121446.4 MEGABYTES FREE");
+            sb.Add(" NO HOLOTAPE FOUND");
+            sb.Add(" LOAD ROM...");
+
+            foreach (string str in sb)
+            {
+                Thread.Sleep(150);
+                Console.WriteLine(str);
+            }
+
+            Thread.Sleep(3000);
+        }
+
+        void Header()
+        {
+            Console.Clear();
+            
+            string stringHeader = "********** THEROPOD SYSTEM " + SystemInfo.SystemVersion + " **********";
+            char[] headerCharArray = stringHeader.ToCharArray();
+
+            for (int i = 0; i < headerCharArray.Length; i++)
+            {
+                Console.Write(headerCharArray[i]);
+                Thread.Sleep(15);
+            }
+
+            Console.WriteLine("\n");
         }
 
         string GenerateLines()

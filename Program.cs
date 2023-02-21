@@ -1,14 +1,21 @@
 ﻿using TheropodSystem.HUD;
+using TheropodSystem;
 
+SystemInfo info = new SystemInfo();
+
+Thread.Sleep(1000);
 Starting starting = new Starting();
 
 starting.StartUp();
+
+starting.StartSystem();
 
 List<string> options = new List<string>();
 
 options.Add("Start");
 options.Add("Files");
 options.Add("User Data");
+options.Add("Lock Screen");
 options.Add("Logs");
 
 int index = 0;

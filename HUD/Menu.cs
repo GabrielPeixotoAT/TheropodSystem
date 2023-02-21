@@ -2,12 +2,13 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using TheropodSystem;
 
 namespace TheropodSystem.HUD
 {
     public class Menu
     {
-        const string HEADERSTING = "********** THEROPOD SYSTEM V1.0.2 **********";
+        static string HEADERSTING = "********** THEROPOD SYSTEM " + SystemInfo.SystemVersion + " **********";
 
         public static int Show(List<string> options)
         {
