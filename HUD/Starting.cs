@@ -7,17 +7,23 @@ namespace TheropodSystem.HUD
 {
     public class Starting
     {
-        string[] loadingLine = new string[5];
+        string[] loadingLine = new string[10];
 
         public Starting()
         {
             Console.ForegroundColor = ConsoleColor.Green;
-            
+
             loadingLine[0] = "0X000000000034783F";
-            loadingLine[1] = "ALOCANTIING MEMORY";
+            loadingLine[1] = "REALOCANTING MEMORY";
             loadingLine[2] = "MEMORY STARTING DISCOVERY";
-            loadingLine[3] = "0X005150343047A";
-            loadingLine[4] = "0X0024785";
+            loadingLine[3] = "0X005150343047A 1 1A35F";
+            loadingLine[4] = "0X002478556";
+            loadingLine[5] = "0X000002345602023 0 1";
+            loadingLine[6] = "CPU0 LAUNCHING CELL";
+            loadingLine[7] = "STATUS CODE 204";
+            loadingLine[8] = "FILE SYSTEM EXT4";
+            loadingLine[9] = "DOTNET SERVICE RUNNING";
+
         }
 
         public void StartUp()
@@ -26,7 +32,7 @@ namespace TheropodSystem.HUD
             {
                 Thread.Sleep(WaitTimeGenerate());
 
-                for(int j = 0; j < 3; j++)
+                for(int j = 0; j < 4; j++)
                 {
                     Console.Write(GenerateLines() + " ");
                 }
@@ -37,7 +43,7 @@ namespace TheropodSystem.HUD
 
         string GenerateLines()
         {
-            return loadingLine[new Random().Next(0, 5)];
+            return loadingLine[new Random().Next(0, 10)];
         }
 
         int WaitTimeGenerate()
