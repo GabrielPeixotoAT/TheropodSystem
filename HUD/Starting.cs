@@ -12,6 +12,7 @@ namespace TheropodSystem.HUD
         public Starting()
         {
             Console.ForegroundColor = ConsoleColor.Green;
+            Console.BackgroundColor = ConsoleColor.Black;
 
             loadingLine[0] = "0X000000000034783F";
             loadingLine[1] = "REALOCANTING MEMORY";
