@@ -9,9 +9,9 @@ UserService userService = new UserService();
 Thread.Sleep(1000);
 Starting starting = new Starting(userService);
 
-//starting.StartUp();
+starting.StartUp();
 
-//starting.StartSystem();
+starting.StartSystem();
 
 User? user;
 
