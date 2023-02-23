@@ -3,14 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using TheropodSystem;
+using TheropodSystem.Models.Auth;
+using TheropodSystem.Services;
 
 namespace TheropodSystem.HUD
 {
     public class Starting
     {
         string[] loadingLine = new string[10];
+        UserService userService;
 
-        public Starting()
+        public Starting(UserService userService)
         {
             Console.ForegroundColor = ConsoleColor.Green;
             Console.BackgroundColor = ConsoleColor.Black;
@@ -26,6 +29,7 @@ namespace TheropodSystem.HUD
             loadingLine[8] = "FILE SYSTEM EXT4";
             loadingLine[9] = "DOTNET SERVICE RUNNING";
 
+            this.userService = userService;
         }
 
         public void StartUp()
@@ -64,6 +68,32 @@ namespace TheropodSystem.HUD
             }
 
             Thread.Sleep(3000);
+        }
+
+        public User? UserLogin()
+        {
+            Header();
+
+            Console.Write("LOGIN: ");
+            string login = Console.ReadLine();
+            Console.Write("PASSWORD: ");
+            string password = Console.ReadLine();
+            
+            AuthResult result = userService.Login(login, password);
+
+            Thread.Sleep(300);
+
+            if(result.HasError)
+                Console.WriteLine("ACCESS DAINED: " + result.Message);
+                
+            Thread.Sleep(1500);
+            
+            return result.User;
+        }
+
+        public void LoginSuccess()
+        {
+
         }
 
         public async void LockScreen()

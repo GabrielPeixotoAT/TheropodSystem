@@ -1,9 +1,4 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Diagnostics;
-using System.Text;
 
 namespace TheropodSystem
 {
@@ -12,6 +7,7 @@ namespace TheropodSystem
         public static readonly string SystemVersion = "V1.0.3";
         public static readonly string COPYRIGHTYEAR = "2023";
         public static string MEMORY = "";
+        public static readonly string DATA_PATH = Environment.CurrentDirectory + "/Data";
 
         public SystemInfo()
         {
@@ -24,7 +20,6 @@ namespace TheropodSystem
 
             Process proc = new System.Diagnostics.Process ();
             proc.StartInfo.FileName = "/bin/bash";
-            //proc.StartInfo.Arguments = "-c \" " + command + " \"";
             proc.StartInfo.Arguments = "-c free -k";
             proc.StartInfo.UseShellExecute = false; 
             proc.StartInfo.RedirectStandardOutput = true;

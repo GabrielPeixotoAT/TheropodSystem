@@ -1,14 +1,25 @@
 ﻿using TheropodSystem.HUD;
 using TheropodSystem;
+using TheropodSystem.Models.Auth;
+using TheropodSystem.Services;
 
 SystemInfo info = new SystemInfo();
+UserService userService = new UserService();
 
 Thread.Sleep(1000);
-Starting starting = new Starting();
+Starting starting = new Starting(userService);
 
 starting.StartUp();
 
 starting.StartSystem();
+
+User? user;
+
+do {
+    user = starting.UserLogin();
+} while (user == null);
+
+starting.LoginSuccess();
 
 List<string> options = new List<string>();
 
@@ -37,6 +48,7 @@ do {
             break;
     }
 } while (index != options.Count);
+
 
 Console.BackgroundColor = ConsoleColor.Black;
 Console.ForegroundColor = ConsoleColor.Green;
