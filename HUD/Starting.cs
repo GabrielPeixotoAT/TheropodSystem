@@ -74,10 +74,17 @@ namespace TheropodSystem.HUD
         {
             Header();
 
-            Console.Write("LOGIN: ");
-            string login = Console.ReadLine();
-            Console.Write("PASSWORD: ");
-            string password = Console.ReadLine();
+            string? login = null;
+            do {
+                Console.Write("LOGIN: ");
+                login = Console.ReadLine();
+            } while (login == null || login == string.Empty);
+            
+            string? password;
+            do {
+                Console.Write("PASSWORD: ");
+                password = Console.ReadLine();
+            } while (password == null || password == string.Empty);
             
             AuthResult result = userService.Login(login, password);
 
@@ -93,10 +100,17 @@ namespace TheropodSystem.HUD
 
         public void LoginSuccess()
         {
+            Console.WriteLine("ACCESS GRANTED \n");
 
+            for (int i = 0; i < 10; i++)
+            {
+                Console.Write("█");
+                Thread.Sleep(150);
+            }
+            Thread.Sleep(500);
         }
 
-        public async void LockScreen()
+        public void LockScreen()
         {
             for (int i = 0; i < 1000; i++)
             {

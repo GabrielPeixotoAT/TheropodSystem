@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using TheropodSystem.Models.Auth;
+using Newtonsoft.Json;
+using TheropodSystem;
 
 namespace TheropodSystem.Services
 {
@@ -12,7 +14,17 @@ namespace TheropodSystem.Services
 
         public UserService()
         {
-            users = new List<User>();
+            List<User>? users;
+
+            using (StreamReader file = File.OpenText(SystemInfo.DATA_PATH+"/users.json"))
+            {
+                JsonSerializer serializer = new JsonSerializer();
+                users = serializer.Deserialize(file, typeof(List<User>)) as List<User>;
+            }
+            if (users != null)
+                this.users = users;
+            else
+                this.users = new List<User>();
         }
 
         public AuthResult Login(string login, string password)
